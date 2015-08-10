@@ -27,6 +27,7 @@ import com.sromku.simple.fb.actions.GetPageAction;
 import com.sromku.simple.fb.actions.GetPagesAction;
 import com.sromku.simple.fb.actions.GetPhotoAction;
 import com.sromku.simple.fb.actions.GetPhotosAction;
+import com.sromku.simple.fb.actions.GetPlacesAction;
 import com.sromku.simple.fb.actions.GetPostsAction;
 import com.sromku.simple.fb.actions.GetProfileAction;
 import com.sromku.simple.fb.actions.GetScoresAction;
@@ -84,6 +85,7 @@ import com.sromku.simple.fb.listeners.OnPageListener;
 import com.sromku.simple.fb.listeners.OnPagesListener;
 import com.sromku.simple.fb.listeners.OnPhotoListener;
 import com.sromku.simple.fb.listeners.OnPhotosListener;
+import com.sromku.simple.fb.listeners.OnPlacesListener;
 import com.sromku.simple.fb.listeners.OnPostsListener;
 import com.sromku.simple.fb.listeners.OnProfileListener;
 import com.sromku.simple.fb.listeners.OnPublishListener;
@@ -971,6 +973,29 @@ public class SimpleFacebook {
         getPagesAction.setEdge(GraphPath.LIKES);
         getPagesAction.execute();
     }
+
+    /**
+     * Get places within a specified distance of a location.<br>
+     * <br>
+     *
+     * @param latitude
+     *            Latitude for surrounding places
+     * @param longitude
+     *            longitude for surrounding places
+     * @param distance
+     *            Distance from location for surrounding places
+     * @param onPlacesListener
+     *            The callback listener.
+     */
+    public void getPlaces(double latitude, double longitude, int distance, OnPlacesListener onPlacesListener) {
+        GetPlacesAction getPlacesAction = new GetPlacesAction(mSessionManager);
+        getPlacesAction.setActionListener(onPlacesListener);
+        getPlacesAction.setLatitude(latitude);
+        getPlacesAction.setLongitude(longitude);
+        getPlacesAction.setDistance(distance);
+        getPlacesAction.execute();
+    }
+
 
     /**
      * Get an individual photo.
