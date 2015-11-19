@@ -81,4 +81,7 @@ public class Place {
         return mName;
     }
 
+    public String toString() {
+        return mName;
+    }
 }

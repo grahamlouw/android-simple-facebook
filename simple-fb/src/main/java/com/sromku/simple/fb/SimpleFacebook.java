@@ -987,12 +987,13 @@ public class SimpleFacebook {
      * @param onPlacesListener
      *            The callback listener.
      */
-    public void getPlaces(double latitude, double longitude, int distance, OnPlacesListener onPlacesListener) {
+    public void getPlaces(double latitude, double longitude, int distance, int limit, OnPlacesListener onPlacesListener) {
         GetPlacesAction getPlacesAction = new GetPlacesAction(mSessionManager);
         getPlacesAction.setActionListener(onPlacesListener);
         getPlacesAction.setLatitude(latitude);
         getPlacesAction.setLongitude(longitude);
         getPlacesAction.setDistance(distance);
+        getPlacesAction.setLimit(limit);
         getPlacesAction.execute();
     }
 
